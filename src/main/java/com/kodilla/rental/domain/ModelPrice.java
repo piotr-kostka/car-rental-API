@@ -18,9 +18,5 @@ public class ModelPrice {
     @Column(name = "model_price_id")
     private long priceId;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "model_id")
-    private Model model;
-
     private BigDecimal price;
 }

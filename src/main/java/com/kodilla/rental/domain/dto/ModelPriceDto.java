@@ -1,7 +1,6 @@
 package com.kodilla.rental.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kodilla.rental.domain.Model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +16,5 @@ import java.math.BigDecimal;
 public class ModelPriceDto {
 
     private long priceId;
-    private Model model;
     private BigDecimal price;
 }

@@ -35,8 +35,4 @@ public class UserAddress {
     private String streetNumber;
 
     private long apartmentNumber;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
 }

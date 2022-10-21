@@ -1,7 +1,6 @@
 package com.kodilla.rental.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.kodilla.rental.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,5 +19,4 @@ public class UserAddressDto {
     private String street;
     private String streetNumber;
     private long apartmentNumber;
-    private User user;
 }
