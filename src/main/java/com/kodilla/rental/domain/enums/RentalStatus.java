@@ -1,4 +1,7 @@
 package com.kodilla.rental.domain.enums;
 
 public enum RentalStatus {
+    RENTED,
+    RETURNED,
+    RETURNED_AND_PAID
 }
