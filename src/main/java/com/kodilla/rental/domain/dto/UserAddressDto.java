@@ -17,6 +17,6 @@ public class UserAddressDto {
     private String city;
     private String postalNumber;
     private String street;
-    private String streetNumber;
+    private String houseNumber;
     private long apartmentNumber;
 }

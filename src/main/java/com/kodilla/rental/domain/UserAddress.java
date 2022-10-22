@@ -32,7 +32,7 @@ public class UserAddress {
     private String street;
 
     @NotNull
-    private String streetNumber;
+    private String houseNumber;
 
     private long apartmentNumber;
 }
