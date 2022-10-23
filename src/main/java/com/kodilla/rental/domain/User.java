@@ -38,7 +38,7 @@ public class User {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address")
-    private UserAddress address;
+    private Address address;
 
     @NotNull
     @Column(name = "creditCard_number")
