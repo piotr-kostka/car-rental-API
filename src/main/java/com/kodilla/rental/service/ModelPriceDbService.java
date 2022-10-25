@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ModelPriceDbService {
-
     private final ModelPriceRepository modelPriceRepository;
     private final ModelPriceMapper modelPriceMapper;
 

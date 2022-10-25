@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public UserDto createUser(@RequestBody UserDto userDto){
+    public UserDto addUser(@RequestBody UserDto userDto){
         return userDbService.createUser(userDto);
     }
 

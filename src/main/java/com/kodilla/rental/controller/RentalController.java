@@ -25,8 +25,13 @@ public class RentalController {
         return rentalDbService.getRental(rentalId);
     }
 
+    @GetMapping(value = "/userRentals/{userId}")
+    public List<RentalDto> getUserRentals(@PathVariable long userId) {
+        return rentalDbService.getUserRentals(userId);
+    }
+
     @DeleteMapping(value = "{rentalId}")
-    public void deleteRental(@PathVariable long rentalId) {
+    public void returnCar(@PathVariable long rentalId) {
         rentalDbService.deleteRental(rentalId);
     }
 
@@ -41,5 +46,5 @@ public class RentalController {
     }
 }
 
-//getByUser
 //makePayment
+//return do poprawy

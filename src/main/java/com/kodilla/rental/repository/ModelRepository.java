@@ -2,10 +2,12 @@ package com.kodilla.rental.repository;
 
 import com.kodilla.rental.domain.Model;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ModelRepository extends CrudRepository<Model, Long> {
     @Override
     List<Model> findAll();

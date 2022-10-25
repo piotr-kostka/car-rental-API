@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AddressDbService {
-
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
 
