@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ModelDbService {
-
     private final ModelRepository modelRepository;
     private final ModelMapper modelMapper;
 

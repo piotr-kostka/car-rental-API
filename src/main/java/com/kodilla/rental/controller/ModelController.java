@@ -31,7 +31,7 @@ public class ModelController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ModelDto createModel(@RequestBody ModelDto modelDto){
+    public ModelDto addModel(@RequestBody ModelDto modelDto){
         return modelDbService.createModel(modelDto);
     }
 

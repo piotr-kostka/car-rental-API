@@ -31,7 +31,7 @@ public class AddressController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public AddressDto createAddress(@RequestBody AddressDto addressDto) {
+    public AddressDto addAddress(@RequestBody AddressDto addressDto) {
         return addressDbService.createAddress(addressDto);
     }
 

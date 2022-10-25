@@ -31,7 +31,7 @@ public class ModelPriceController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ModelPriceDto createPrice(@RequestBody ModelPriceDto priceDto){
+    public ModelPriceDto addPrice(@RequestBody ModelPriceDto priceDto){
         return priceDbService.createModelPrice(priceDto);
     }
 

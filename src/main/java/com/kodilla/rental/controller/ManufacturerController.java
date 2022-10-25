@@ -31,7 +31,7 @@ public class ManufacturerController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ManufacturerDto createManufacturer(@RequestBody ManufacturerDto manufacturerDto){
+    public ManufacturerDto addManufacturer(@RequestBody ManufacturerDto manufacturerDto){
         return manufacturerDbService.createManufacturer(manufacturerDto);
     }
 
