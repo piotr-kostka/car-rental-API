@@ -1,0 +1,11 @@
+mappery - sprawdzić czy ok
+sql audyty
+mailing przy wypożyczeniu do uzytkownika i do admina
+poprawa maila z raportem
+service z rentalem - zwrot auta i płatność
+wyliczenie ceny w zaleznosci od warunkow pogodowych
+implementacja przeliczania kursów walut
+testy!
+dodanie exceptionow alreadyExists
+uwzględnic warunki brzegowe w wyliczeniach zewnętrznego API
+thymeleaf!

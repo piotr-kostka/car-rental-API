@@ -25,12 +25,12 @@ public class EmailScheduler {
         long userSize = userRepository.count();
 
         emailService.send(
-                new Mail(
-                        adminConfig.getAdminMail(),
-                        SUBJECT,
-                        "In database you got " + rentalSize + (rentalSize ==1 ? " rental" : " rentals") +
-                                " and registered " + userSize + (userSize ==1 ? " user" : " users")
-                )
+            new Mail(
+                    adminConfig.getAdminMail(),
+                    SUBJECT,
+                    "In database you got " + rentalSize + (rentalSize ==1 ? " rental" : " rentals") +
+                            " and registered " + userSize + (userSize ==1 ? " user" : " users")
+            )
         );
     }
 }

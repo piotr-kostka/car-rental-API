@@ -45,6 +45,3 @@ public class RentalController {
         return rentalDbService.updateRental(rentalDto);
     }
 }
-
-//makePayment
-//return do poprawy
