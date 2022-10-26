@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 public class RatesDto {
 
     @JsonProperty
-    private float mid;
+    private double mid;
 }

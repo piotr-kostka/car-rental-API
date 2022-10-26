@@ -30,15 +30,14 @@ public class User {
     private String lastName;
 
     @NotNull
+    private String address;
+
+    @NotNull
     @Email
     private String mail;
 
     @NotNull
     private String password;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "address")
-    private Address address;
 
     @NotNull
     @Column(name = "creditCard_number")

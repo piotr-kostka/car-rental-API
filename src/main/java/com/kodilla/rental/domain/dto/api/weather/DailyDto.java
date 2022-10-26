@@ -13,14 +13,14 @@ import lombok.NoArgsConstructor;
 public class DailyDto {
 
     @JsonProperty
-    private float[] temperature_2m_max;
+    private double[] temperature_2m_max;
 
     @JsonProperty
-    private float[] temperature_2m_min;
+    private double[] temperature_2m_min;
 
     @JsonProperty
-    private float[] rain_sum;
+    private double[] rain_sum;
 
     @JsonProperty
-    private float[] snowfall_sum;
+    private double[] snowfall_sum;
 }

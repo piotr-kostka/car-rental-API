@@ -3,7 +3,6 @@ package com.kodilla.rental.domain.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kodilla.rental.domain.Rental;
-import com.kodilla.rental.domain.Address;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +21,9 @@ public class UserDto {
     private long userId;
     private String firstName;
     private String lastName;
+    private String address;
     private String mail;
     private String password;
-    private Address address;
     private String creditCardNo;
     private String toPay;
     private boolean isBlocked;
