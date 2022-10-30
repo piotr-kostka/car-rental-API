@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kodilla.rental.domain.Car;
 import com.kodilla.rental.domain.Manufacturer;
-import com.kodilla.rental.domain.ModelPrice;
 import com.kodilla.rental.domain.enums.model.BodyType;
 import com.kodilla.rental.domain.enums.model.FuelType;
 import com.kodilla.rental.domain.enums.model.TransmissionType;
@@ -25,13 +24,12 @@ public class ModelDto {
     private long modelId;
     private Manufacturer manufacturer;
     private String name;
-    private float engineSize;
+    private double engineSize;
     private BodyType bodyType;
     private int productionYear;
     private String color;
     private int seatsQuantity;
     private int doorQuantity;
-    private ModelPrice modelPrice;
     private FuelType fuelType;
     private TransmissionType transmissionType;
 

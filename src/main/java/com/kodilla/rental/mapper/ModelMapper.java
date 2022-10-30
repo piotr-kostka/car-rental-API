@@ -21,7 +21,6 @@ public class ModelMapper {
                 modelDto.getColor(),
                 modelDto.getSeatsQuantity(),
                 modelDto.getDoorQuantity(),
-                modelDto.getModelPrice(),
                 modelDto.getFuelType(),
                 modelDto.getTransmissionType(),
                 modelDto.getCars()
@@ -39,7 +38,6 @@ public class ModelMapper {
                 model.getColor(),
                 model.getSeatsQuantity(),
                 model.getDoorQuantity(),
-                model.getModelPrice(),
                 model.getFuelType(),
                 model.getTransmissionType(),
                 model.getCars()

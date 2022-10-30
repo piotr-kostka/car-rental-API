@@ -15,6 +15,7 @@ public class CarMapper {
                 carDto.getCarId(),
                 carDto.getModel(),
                 carDto.getLicenseNumber(),
+                carDto.getPrice(),
                 carDto.getCarStatus(),
                 carDto.getRentals()
         );
@@ -25,6 +26,7 @@ public class CarMapper {
                 car.getCarId(),
                 car.getModel(),
                 car.getLicenseNumber(),
+                car.getPrice(),
                 car.getCarStatus(),
                 car.getRentals()
         );

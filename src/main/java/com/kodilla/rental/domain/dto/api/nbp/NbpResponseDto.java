@@ -14,12 +14,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NbpResponseDto {
 
-    @JsonProperty
+    @JsonProperty("currency")
     private String currency;
 
-    @JsonProperty
+    @JsonProperty("code")
     private String code;
 
-    @JsonProperty
+    @JsonProperty("rates")
     private List<RatesDto> rates;
 }

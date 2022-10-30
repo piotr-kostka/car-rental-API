@@ -8,7 +8,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +28,9 @@ public class Rental {
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    private BigDecimal toPay;
+    private double priceRate;
+    private BigDecimal totalValue;
+    private BigDecimal leftToPay;
 
     @Enumerated(EnumType.STRING)
     private RentalStatus rentalStatus;
@@ -39,11 +40,7 @@ public class Rental {
     @JoinColumn(name = "user")
     private User user;
 
-    @ManyToMany
-    @JoinTable(
-            name = "rental_carts",
-            joinColumns = {@JoinColumn(name = "rental_id", referencedColumnName = "rental_id")},
-            inverseJoinColumns = {@JoinColumn(name = "car_id", referencedColumnName = "car_id")}
-    )
-    private List<Car> cars;
+    @ManyToOne
+    @JoinColumn(name = "car")
+    private Car car;
 }

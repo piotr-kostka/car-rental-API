@@ -3,7 +3,7 @@ package com.kodilla.rental.client;
 import com.kodilla.rental.config.NbpConfig;
 import com.kodilla.rental.domain.dto.api.nbp.NbpResponseDto;
 import com.kodilla.rental.domain.enums.Currency;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -11,20 +11,20 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @Component
+@RequiredArgsConstructor
 public class NbpApiClient {
 
-    @Autowired
-    private NbpConfig nbpConfig;
+    private final NbpConfig nbpConfig;
 
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     public double getExchangeRate(Currency currency) {
 
-        if (currency.equals("PLN")) {
+        if (currency.equals(Currency.PLN)) {
             return 1;
         } else {
             URI uri = UriComponentsBuilder.fromHttpUrl(nbpConfig.getNbpApiEndpoint() + currency)
+                    .queryParam("format", "json")
                     .build()
                     .encode()
                     .toUri();

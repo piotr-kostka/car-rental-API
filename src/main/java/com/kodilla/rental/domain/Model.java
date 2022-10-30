@@ -32,7 +32,7 @@ public class Model {
     private String name;
 
     @NotNull
-    private float engineSize;
+    private double engineSize;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -44,10 +44,6 @@ public class Model {
     private String color;
     private int seatsQuantity;
     private int doorQuantity;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "model_price")
-    private ModelPrice modelPrice;
 
     @NotNull
     @Enumerated(EnumType.STRING)
@@ -65,4 +61,41 @@ public class Model {
             fetch = FetchType.LAZY
     )
     private Set<Car> cars;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Model model = (Model) o;
+
+        if (Double.compare(model.engineSize, engineSize) != 0) return false;
+        if (productionYear != model.productionYear) return false;
+        if (seatsQuantity != model.seatsQuantity) return false;
+        if (doorQuantity != model.doorQuantity) return false;
+        if (!manufacturer.equals(model.manufacturer)) return false;
+        if (!name.equals(model.name)) return false;
+        if (bodyType != model.bodyType) return false;
+        if (!color.equals(model.color)) return false;
+        if (fuelType != model.fuelType) return false;
+        return transmissionType == model.transmissionType;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = manufacturer.hashCode();
+        result = 31 * result + name.hashCode();
+        temp = Double.doubleToLongBits(engineSize);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + bodyType.hashCode();
+        result = 31 * result + productionYear;
+        result = 31 * result + color.hashCode();
+        result = 31 * result + seatsQuantity;
+        result = 31 * result + doorQuantity;
+        result = 31 * result + fuelType.hashCode();
+        result = 31 * result + transmissionType.hashCode();
+        return result;
+    }
 }

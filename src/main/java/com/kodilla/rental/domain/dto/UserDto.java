@@ -25,7 +25,7 @@ public class UserDto {
     private String mail;
     private String password;
     private String creditCardNo;
-    private String toPay;
+    private double toPay;
     private boolean isBlocked;
     private LocalDate signupDate;
 

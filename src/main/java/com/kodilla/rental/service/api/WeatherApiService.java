@@ -2,45 +2,55 @@ package com.kodilla.rental.service.api;
 
 import com.kodilla.rental.client.WeatherApiClient;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.ArrayUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
 public class WeatherApiService {
 
-    @Autowired
-    private WeatherApiClient weatherApiClient;
+    private final WeatherApiClient weatherApiClient;
 
-    public double getAverageTemperature() {
-        double avgTemp = 0;
-        double[] maxTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_max();
-        double[] minTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_min();
-        double[] mergedArray = ArrayUtils.addAll(maxTemp, minTemp);
+    public double getAverageTemperature() throws ArithmeticException{
+        List<Double> maxTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_max();
+        List<Double> minTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_min();
+        List<Double> mergedList = Stream.of(maxTemp, minTemp)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
 
-        for (int i = 0; i < mergedArray.length; i++) {
-            avgTemp += mergedArray[i];
+        double sum = 0;
+
+        if (mergedList.size() == 0) {
+            throw new ArithmeticException();
         }
-        return avgTemp / mergedArray.length;
+
+        for (int i = 0; i < mergedList.size(); i++) {
+            sum += mergedList.get(i);
+        }
+
+        return sum / mergedList.size();
     }
 
     public double getTotalRainfall() {
         double totalRainfall = 0;
-        double[] rainfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getRain_sum();
+        List<Double> rainfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getRain_sum();
 
-        for (int r = 0; r < rainfall.length; r++) {
-            totalRainfall += rainfall[r];
+        for (int r = 0; r < rainfall.size(); r++) {
+            totalRainfall += rainfall.get(r);
         }
         return totalRainfall;
     }
 
     public double getTotalSnowfall() {
         double totalSnowfall = 0;
-        double[] snowfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getSnowfall_sum();
+        List<Double> snowfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getSnowfall_sum();
 
-        for (int r = 0; r < snowfall.length; r++) {
-            totalSnowfall += snowfall[r];
+        for (int s = 0; s < snowfall.size(); s++) {
+            totalSnowfall += snowfall.get(s);
         }
         return totalSnowfall;
     }

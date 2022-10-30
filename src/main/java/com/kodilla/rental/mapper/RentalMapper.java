@@ -16,11 +16,13 @@ public class RentalMapper {
                 rentalDto.getRentDate(),
                 rentalDto.getReturnDate(),
                 rentalDto.getCurrency(),
-                rentalDto.getToPay(),
+                rentalDto.getPriceRate(),
+                rentalDto.getTotalValue(),
+                rentalDto.getLeftToPay(),
                 rentalDto.getRentalStatus(),
                 rentalDto.getPaymentDate(),
                 rentalDto.getUser(),
-                rentalDto.getCars()
+                rentalDto.getCar()
         );
     }
 
@@ -30,11 +32,13 @@ public class RentalMapper {
                 rental.getRentDate(),
                 rental.getReturnDate(),
                 rental.getCurrency(),
-                rental.getToPay(),
+                rental.getPriceRate(),
+                rental.getTotalValue(),
+                rental.getLeftToPay(),
                 rental.getRentalStatus(),
                 rental.getPaymentDate(),
                 rental.getUser(),
-                rental.getCars()
+                rental.getCar()
         );
     }
 
