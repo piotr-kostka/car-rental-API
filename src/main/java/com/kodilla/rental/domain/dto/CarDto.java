@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,6 +23,7 @@ public class CarDto {
     private long carId;
     private Model model;
     private String licenseNumber;
+    private BigDecimal price;
     private CarStatus carStatus;
 
     @JsonIgnore

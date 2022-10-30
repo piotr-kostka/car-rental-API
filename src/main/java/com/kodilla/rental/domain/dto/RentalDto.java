@@ -1,6 +1,5 @@
 package com.kodilla.rental.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.kodilla.rental.domain.Car;
 import com.kodilla.rental.domain.User;
@@ -13,7 +12,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,11 +24,11 @@ public class RentalDto {
     private LocalDate rentDate;
     private LocalDate returnDate;
     private Currency currency;
-    private BigDecimal toPay;
+    private double priceRate;
+    private BigDecimal totalValue;
+    private BigDecimal leftToPay;
     private RentalStatus rentalStatus;
     private LocalDate paymentDate;
     private User user;
-
-    @JsonIgnore
-    private List<Car> cars;
+    private Car car;
 }

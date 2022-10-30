@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RatesDto {
 
-    @JsonProperty
+    @JsonProperty("mid")
     private double mid;
 }

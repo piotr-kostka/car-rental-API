@@ -3,6 +3,7 @@ package com.kodilla.rental.service.mail;
 import com.kodilla.rental.domain.mail.Mail;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,8 +15,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EmailService {
     private final JavaMailSender javaMailSender;
+    private static final String SUBJECT_DAILY = "Rental Application: Daily Report";
+    private static final String SUBJECT_NEW_RENTAL = "Rental Application: New Rental";
 
-    //dodać MailCreatorService
+    @Autowired
+    private MailCreatorService mailCreatorService;
 
     public void send(final Mail mail) {
         try {
@@ -31,7 +35,11 @@ public class EmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mail.getMessage());
+            if (mail.getSubject().equals(SUBJECT_DAILY)) {
+                messageHelper.setText(mailCreatorService.buildDailyReportMail(mail.getMessage()), true);
+            } else if (mail.getSubject().equals(SUBJECT_NEW_RENTAL)) {
+                messageHelper.setText(mailCreatorService.buildNewRentalMail(mail.getMessage()), true);
+            }
         };
     }
 }

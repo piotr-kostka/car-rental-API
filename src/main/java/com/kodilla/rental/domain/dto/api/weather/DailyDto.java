@@ -3,24 +3,26 @@ package com.kodilla.rental.domain.dto.api.weather;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Getter
+import java.util.List;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DailyDto {
 
-    @JsonProperty
-    private double[] temperature_2m_max;
+    @JsonProperty("temperature_2m_max")
+    private List<Double> temperature_2m_max;
 
-    @JsonProperty
-    private double[] temperature_2m_min;
+    @JsonProperty("temperature_2m_min")
+    private List<Double> temperature_2m_min;
 
-    @JsonProperty
-    private double[] rain_sum;
+    @JsonProperty("rain_sum")
+    private List<Double> rain_sum;
 
-    @JsonProperty
-    private double[] snowfall_sum;
+    @JsonProperty("snowfall_sum")
+    private List<Double> snowfall_sum;
 }

@@ -47,7 +47,7 @@ public class CarDbService {
 
     public List<CarDto> getCarsByPriceLowerThan(final BigDecimal price) {
         List<Car> cars = carRepository.findAll().stream()
-                .filter(c -> c.getModel().getModelPrice().getPrice().compareTo(price) <= 0)
+                .filter(c -> c.getPrice().compareTo(price) <= 0)
                 .collect(Collectors.toList());
         return carMapper.mapToCarDtoList(cars);
     }

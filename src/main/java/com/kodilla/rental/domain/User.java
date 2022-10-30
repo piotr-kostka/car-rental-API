@@ -40,11 +40,11 @@ public class User {
     private String password;
 
     @NotNull
-    @Column(name = "creditCard_number")
+    @Column(name = "credit_card_number")
     private String creditCardNo;
 
     @Column(name = "amount_to_pay")
-    private String toPay;
+    private double toPay;
 
     @Column(name = "account_status")
     private boolean isBlocked;
@@ -61,4 +61,30 @@ public class User {
             fetch = FetchType.LAZY
     )
     private Set<Rental> rentals;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!firstName.equals(user.firstName)) return false;
+        if (!lastName.equals(user.lastName)) return false;
+        if (!address.equals(user.address)) return false;
+        if (!mail.equals(user.mail)) return false;
+        if (!password.equals(user.password)) return false;
+        return creditCardNo.equals(user.creditCardNo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + address.hashCode();
+        result = 31 * result + mail.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + creditCardNo.hashCode();
+        return result;
+    }
 }

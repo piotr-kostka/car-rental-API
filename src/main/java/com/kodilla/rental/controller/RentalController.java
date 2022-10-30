@@ -30,9 +30,9 @@ public class RentalController {
         return rentalDbService.getUserRentals(userId);
     }
 
-    @DeleteMapping(value = "{rentalId}")
+    @PutMapping(value = "/return/{rentalId}")
     public void returnCar(@PathVariable long rentalId) {
-        rentalDbService.deleteRental(rentalId);
+        rentalDbService.returnCar(rentalId);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -43,5 +43,10 @@ public class RentalController {
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public RentalDto updateRental(@RequestBody RentalDto rentalDto){
         return rentalDbService.updateRental(rentalDto);
+    }
+
+    @PutMapping(value = "/pay/{rentalId}")
+    public void makePayment(@PathVariable long rentalId) {
+        rentalDbService.makePayment(rentalId);
     }
 }
