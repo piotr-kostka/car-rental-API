@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/cars")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class CarController {
 
     private final CarDbService carDbService;

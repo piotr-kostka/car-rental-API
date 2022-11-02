@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,5 +13,5 @@ import java.util.List;
 public class WeatherResponseDto {
 
     @JsonProperty("daily")
-    private List<DailyDto> daily;
+    private DailyDto daily;
 }

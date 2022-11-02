@@ -16,8 +16,8 @@ public class WeatherApiService {
     private final WeatherApiClient weatherApiClient;
 
     public double getAverageTemperature() throws ArithmeticException{
-        List<Double> maxTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_max();
-        List<Double> minTemp = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getTemperature_2m_min();
+        List<Double> maxTemp = weatherApiClient.getWeatherForLocation().getDaily().getTemperature_2m_max();
+        List<Double> minTemp = weatherApiClient.getWeatherForLocation().getDaily().getTemperature_2m_min();
         List<Double> mergedList = Stream.of(maxTemp, minTemp)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
@@ -37,7 +37,7 @@ public class WeatherApiService {
 
     public double getTotalRainfall() {
         double totalRainfall = 0;
-        List<Double> rainfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getRain_sum();
+        List<Double> rainfall = weatherApiClient.getWeatherForLocation().getDaily().getRain_sum();
 
         for (int r = 0; r < rainfall.size(); r++) {
             totalRainfall += rainfall.get(r);
@@ -47,7 +47,7 @@ public class WeatherApiService {
 
     public double getTotalSnowfall() {
         double totalSnowfall = 0;
-        List<Double> snowfall = weatherApiClient.getWeatherForLocation().get(0).getDaily().get(0).getSnowfall_sum();
+        List<Double> snowfall = weatherApiClient.getWeatherForLocation().getDaily().getSnowfall_sum();
 
         for (int s = 0; s < snowfall.size(); s++) {
             totalSnowfall += snowfall.get(s);

@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/manufacturers")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class ManufacturerController {
 
     private final ManufacturerDbService manufacturerDbService;
