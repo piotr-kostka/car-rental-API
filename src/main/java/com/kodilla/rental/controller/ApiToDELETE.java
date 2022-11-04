@@ -5,6 +5,7 @@ import com.kodilla.rental.client.WeatherApiClient;
 import com.kodilla.rental.domain.dto.api.weather.WeatherResponseDto;
 import com.kodilla.rental.domain.enums.Currency;
 import com.kodilla.rental.service.api.WeatherApiService;
+import com.kodilla.rental.service.api.WeatherConditionsRate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class ApiToDELETE {
     private final NbpApiClient nbpApiClient;
 
     private final WeatherApiClient weatherApiClient;
+    private final WeatherConditionsRate weatherConditionsRate;
 
     @GetMapping("temperature")
     public void getTemp() {
@@ -41,6 +43,11 @@ public class ApiToDELETE {
 
         double rate = apiClient.getTotalSnowfall();
         System.out.println(rate);
+    }
+
+    @GetMapping("rate")
+    public Double getRate() {
+        return weatherConditionsRate.getWeatherRate();
     }
 
     @GetMapping("response")

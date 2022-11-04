@@ -2,6 +2,7 @@ package com.kodilla.rental.service;
 
 import com.kodilla.rental.domain.User;
 import com.kodilla.rental.domain.dto.UserDto;
+import com.kodilla.rental.exception.alreadyExists.UserAlreadyExistException;
 import com.kodilla.rental.exception.notFound.UserNotFoundException;
 import com.kodilla.rental.mapper.UserMapper;
 import com.kodilla.rental.repository.UserRepository;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -29,22 +32,49 @@ public class UserDbService {
     }
 
     @Transactional
-    public UserDto createUser(final UserDto userDto) {
-        User user = userMapper.mapToUser(userDto);
-        user.setSignupDate(LocalDate.now());
-        User savedUser = userRepository.save(user);
-        return userMapper.mapToUserDto(savedUser);
+    public UserDto createUser(final UserDto userDto) throws UserAlreadyExistException {
+
+        List<Long> peselList = getAllUsers().stream()
+                .map(UserDto::getPesel)
+                .collect(Collectors.toList());
+
+        if (!peselList.contains(userDto.getPesel())) {
+            User user = userMapper.mapToUser(userDto);
+            user.setBlocked(false);
+            user.setToPay(0);
+            user.setSignupDate(LocalDate.now());
+            User savedUser = userRepository.save(user);
+            return userMapper.mapToUserDto(savedUser);
+        } else {
+            throw new UserAlreadyExistException();
+        }
     }
 
     @Transactional
-    public UserDto updateUser(final UserDto userDto) {
-        User user = userMapper.mapToUser(userDto);
-        User savedUser = userRepository.save(user);
-        return userMapper.mapToUserDto(savedUser);
+    public UserDto updateUser(final UserDto userDto) throws UserAlreadyExistException, UserNotFoundException {
+
+        List<Long> peselList = getAllUsers().stream()
+                .map(UserDto::getPesel)
+                .collect(Collectors.toList());
+
+        if (!userRepository.existsById(userDto.getUserId())) {
+            throw new UserNotFoundException(userDto.getUserId());
+        } else if (peselList.contains(userDto.getPesel())) {
+            throw new UserAlreadyExistException();
+        } else {
+            User user = userMapper.mapToUser(userDto);
+            User savedUser = userRepository.save(user);
+            return userMapper.mapToUserDto(savedUser);
+        }
     }
 
     @Transactional
-    public void deleteUser(final long userId) {
-        userRepository.deleteById(userId);
+    public void deleteUser(final long userId) throws UserNotFoundException {
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            userRepository.deleteById(userId);
+        } else {
+            throw new UserNotFoundException(userId);
+        }
     }
 }

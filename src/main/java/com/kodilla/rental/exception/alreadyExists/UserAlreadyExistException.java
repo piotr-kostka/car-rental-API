@@ -5,7 +5,7 @@ import com.kodilla.rental.exception.EntityAlreadyExistException;
 
 public class UserAlreadyExistException extends EntityAlreadyExistException {
 
-    public UserAlreadyExistException(long id) {
-        super(User.class, id);
+    public UserAlreadyExistException() {
+        super(User.class);
     }
 }

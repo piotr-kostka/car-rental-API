@@ -30,6 +30,9 @@ public class User {
     private String lastName;
 
     @NotNull
+    private long pesel;
+
+    @NotNull
     private String address;
 
     @NotNull
@@ -72,9 +75,7 @@ public class User {
         if (!firstName.equals(user.firstName)) return false;
         if (!lastName.equals(user.lastName)) return false;
         if (!address.equals(user.address)) return false;
-        if (!mail.equals(user.mail)) return false;
-        if (!password.equals(user.password)) return false;
-        return creditCardNo.equals(user.creditCardNo);
+        return mail.equals(user.mail);
     }
 
     @Override
@@ -83,8 +84,6 @@ public class User {
         result = 31 * result + lastName.hashCode();
         result = 31 * result + address.hashCode();
         result = 31 * result + mail.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + creditCardNo.hashCode();
         return result;
     }
 }
