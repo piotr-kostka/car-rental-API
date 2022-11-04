@@ -51,16 +51,10 @@ public class UserDbService {
     }
 
     @Transactional
-    public UserDto updateUser(final UserDto userDto) throws UserAlreadyExistException, UserNotFoundException {
-
-        List<Long> peselList = getAllUsers().stream()
-                .map(UserDto::getPesel)
-                .collect(Collectors.toList());
+    public UserDto updateUser(final UserDto userDto) throws UserNotFoundException {
 
         if (!userRepository.existsById(userDto.getUserId())) {
             throw new UserNotFoundException(userDto.getUserId());
-        } else if (peselList.contains(userDto.getPesel())) {
-            throw new UserAlreadyExistException();
         } else {
             User user = userMapper.mapToUser(userDto);
             User savedUser = userRepository.save(user);
