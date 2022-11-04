@@ -5,7 +5,7 @@ import com.kodilla.rental.exception.EntityAlreadyExistException;
 
 public class ManufacturerAlreadyExistException extends EntityAlreadyExistException {
 
-    public ManufacturerAlreadyExistException(long id) {
-        super(Manufacturer.class, id);
+    public ManufacturerAlreadyExistException() {
+        super(Manufacturer.class);
     }
 }

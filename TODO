@@ -1,5 +1,9 @@
-mappery - sprawdzić czy ok
-dodanie exceptionow alreadyExists
-testy w postmanie
+mappery, exceptiony i postman:
+1. manufacturer - OK
+2. user - OK
+3. model -
+4. car -
+5. rental -
+
 testy! controllery, mappery, serwisy, clienty
 USUNIECIE KLASY API controller
