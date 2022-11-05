@@ -3,6 +3,7 @@ package com.kodilla.rental.service;
 import com.kodilla.rental.domain.Car;
 import com.kodilla.rental.domain.dto.CarDto;
 import com.kodilla.rental.domain.enums.CarStatus;
+import com.kodilla.rental.exception.alreadyExists.CarAlreadyExistException;
 import com.kodilla.rental.exception.notFound.CarNotFoundException;
 import com.kodilla.rental.exception.notFound.ManufacturerNotFoundException;
 import com.kodilla.rental.mapper.CarMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -67,21 +69,41 @@ public class CarDbService {
     }
 
     @Transactional
-    public CarDto createCar(final CarDto carDto) {
-        Car car = carMapper.mapToCar(carDto);
-        Car savedCar = carRepository.save(car);
-        return carMapper.mapToCarDto(savedCar);
+    public CarDto createCar(final CarDto carDto) throws CarAlreadyExistException {
+
+        List<String> licenseNumbersList = getAllCars().stream()
+                .map(CarDto::getLicenseNumber)
+                .collect(Collectors.toList());
+
+        if (!licenseNumbersList.contains(carDto.getLicenseNumber())) {
+            Car car = carMapper.mapToCar(carDto);
+            Car savedCar = carRepository.save(car);
+            return carMapper.mapToCarDto(savedCar);
+        } else {
+            throw new CarAlreadyExistException();
+        }
     }
 
     @Transactional
-    public CarDto updateCar(final CarDto carDto) {
-        Car car = carMapper.mapToCar(carDto);
-        Car savedCar = carRepository.save(car);
-        return carMapper.mapToCarDto(savedCar);
+    public CarDto updateCar(final CarDto carDto) throws CarNotFoundException {
+
+        if (!carRepository.existsById(carDto.getCarId())) {
+            throw new CarNotFoundException(carDto.getCarId());
+        } else {
+            Car car = carMapper.mapToCar(carDto);
+            Car savedCar = carRepository.save(car);
+            return carMapper.mapToCarDto(savedCar);
+        }
     }
 
     @Transactional
-    public void deleteCar(final long carId) {
-        carRepository.deleteById(carId);
+    public void deleteCar(final long carId) throws CarNotFoundException {
+        Optional<Car> car = carRepository.findById(carId);
+
+        if (car.isPresent()) {
+            carRepository.deleteById(carId);
+        } else {
+            throw new CarNotFoundException(carId);
+        }
     }
 }
