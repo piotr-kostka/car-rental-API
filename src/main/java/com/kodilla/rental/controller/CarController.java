@@ -27,27 +27,27 @@ public class CarController {
         return carDbService.getCar(carId);
     }
 
-    @GetMapping(value = "/cars/manufacturer/{manufacturerId}")
+    @GetMapping(value = "/manufacturer/{manufacturerId}")
     public List<CarDto> getCarsByManufacturer(@PathVariable long manufacturerId) {
         return carDbService.getCarsByManufacturer(manufacturerId);
     }
 
-    @GetMapping(value = "/cars/model/{modelId}")
+    @GetMapping(value = "/model/{modelId}")
     public List<CarDto> getCarsByModel(@PathVariable long modelId) {
         return carDbService.getCarsByModel(modelId);
     }
 
-    @GetMapping(value = "/cars/price/{price}")
+    @GetMapping(value = "/price/{price}")
     public List<CarDto> getCarsByPriceLowerThan(@PathVariable BigDecimal price) {
         return carDbService.getCarsByPriceLowerThan(price);
     }
 
-    @GetMapping(value = "/cars/available")
+    @GetMapping(value = "/available")
     public List<CarDto> getAvailableCars() {
         return carDbService.getAvailableCars();
     }
 
-    @GetMapping(value = "/cars/rented")
+    @GetMapping(value = "/rented")
     public List<CarDto> getRentedCars() {
         return carDbService.getRentedCars();
     }

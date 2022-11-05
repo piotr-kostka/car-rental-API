@@ -41,8 +41,13 @@ public class Model {
     @NotNull
     private int productionYear;
 
+    @NotNull
     private String color;
+
+    @NotNull
     private int seatsQuantity;
+
+    @NotNull
     private int doorQuantity;
 
     @NotNull
