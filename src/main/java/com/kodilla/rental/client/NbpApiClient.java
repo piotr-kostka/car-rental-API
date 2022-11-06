@@ -24,7 +24,6 @@ public class NbpApiClient {
             return 1;
         } else {
             URI uri = UriComponentsBuilder.fromHttpUrl(nbpConfig.getNbpApiEndpoint() + currency)
-                    .queryParam("format", "json")
                     .build()
                     .encode()
                     .toUri();
