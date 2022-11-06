@@ -103,4 +103,9 @@ public class Model {
         result = 31 * result + transmissionType.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return manufacturer + " " + name;
+    }
 }

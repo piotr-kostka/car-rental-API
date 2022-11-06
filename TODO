@@ -1,9 +1,2 @@
-mappery, exceptiony i postman:
-1. manufacturer - OK
-2. user - OK
-3. model - OK
-4. car - OK
-5. rental - create ogarnąć carstatus, return ogarnac kwoty i makepayment
-
 testy! controllery, mappery, serwisy, clienty
 USUNIECIE KLASY API controller

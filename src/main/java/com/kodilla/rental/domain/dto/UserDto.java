@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class UserDto {
     private String mail;
     private String password;
     private String creditCardNo;
-    private double toPay;
+    private BigDecimal toPay;
     private boolean isBlocked;
     private LocalDate signupDate;
 

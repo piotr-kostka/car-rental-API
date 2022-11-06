@@ -37,7 +37,7 @@ public class EmailService {
             messageHelper.setSubject(mail.getSubject());
             if (mail.getSubject().equals(SUBJECT_DAILY)) {
                 messageHelper.setText(mailCreatorService.buildDailyReportMail(mail.getMessage()), true);
-            } else if (mail.getSubject().equals(SUBJECT_NEW_RENTAL)) {
+            } else {
                 messageHelper.setText(mailCreatorService.buildNewRentalMail(mail.getMessage()), true);
             }
         };

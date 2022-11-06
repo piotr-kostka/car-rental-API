@@ -41,11 +41,6 @@ public class RentalController {
         return rentalDbService.createRental(rentalDto);
     }
 
-    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public RentalDto updateRental(@RequestBody RentalDto rentalDto){
-        return rentalDbService.updateRental(rentalDto);
-    }
-
     @PutMapping(value = "/pay/{rentalId}")
     public void makePayment(@PathVariable long rentalId) {
         rentalDbService.makePayment(rentalId);
