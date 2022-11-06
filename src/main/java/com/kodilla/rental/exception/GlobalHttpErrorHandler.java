@@ -11,17 +11,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Object> handleEntityNotFoundException (EntityNotFoundException exception) {
+    public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(EntityAlreadyExistException.class)
-    public ResponseEntity<Object> handleEntityAlreadyExistsException (EntityAlreadyExistException exception) {
+    public ResponseEntity<Object> handleEntityAlreadyExistsException(EntityAlreadyExistException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(CarCannotBeRented.class)
-    public ResponseEntity<Object> handleCarCannotBeRented (CarCannotBeRented exception) {
+    public ResponseEntity<Object> handleCarCannotBeRented(CarCannotBeRented exception) {
         return new ResponseEntity<>("Car is already rented or damaged", HttpStatus.BAD_REQUEST);
     }
 }

@@ -30,6 +30,7 @@ public class NbpApiClient {
                     .toUri();
 
             NbpResponseDto nbpResponseDto = restTemplate.getForObject(uri, NbpResponseDto.class);
+            assert nbpResponseDto != null;
             return nbpResponseDto.getRates().get(0).getMid();
         }
     }

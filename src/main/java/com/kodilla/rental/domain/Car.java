@@ -59,4 +59,9 @@ public class Car {
         result = 31 * result + licenseNumber.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return model + ", license number: " + licenseNumber;
+    }
 }

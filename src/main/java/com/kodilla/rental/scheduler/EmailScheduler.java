@@ -32,7 +32,8 @@ public class EmailScheduler {
                     adminConfig.getAdminMail(),
                     SUBJECT,
                     "Yesterday " + getNewUsers() + (getNewUsers() ==1 ? " user was" : " users were") + " created and "
-                            + getNewRentals() + (getNewRentals() ==1 ? " rental was made" : " rentals were made")
+                            + getNewRentals() + (getNewRentals() ==1 ? " rental was made" : " rentals were made"),
+                    null
             )
         );
     }
