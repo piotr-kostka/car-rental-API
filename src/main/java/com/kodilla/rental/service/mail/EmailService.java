@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 public class EmailService {
     private final JavaMailSender javaMailSender;
     private static final String SUBJECT_DAILY = "Rental Application: Daily Report";
-    private static final String SUBJECT_NEW_RENTAL = "Rental Application: New Rental";
 
     @Autowired
     private MailCreatorService mailCreatorService;
