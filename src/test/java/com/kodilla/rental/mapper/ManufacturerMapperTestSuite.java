@@ -22,7 +22,7 @@ public class ManufacturerMapperTestSuite {
 
     private Manufacturer manufacturer;
     private ManufacturerDto manufacturerDto;
-    private List<Manufacturer> manufacturerList = new ArrayList<>();
+    private final List<Manufacturer> manufacturerList = new ArrayList<>();
 
     @BeforeEach
     void prepareData() {

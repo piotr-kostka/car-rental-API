@@ -1,7 +1,6 @@
 package com.kodilla.rental.service;
 
 import com.kodilla.rental.client.NbpApiClient;
-import com.kodilla.rental.config.AdminConfig;
 import com.kodilla.rental.domain.Car;
 import com.kodilla.rental.domain.Rental;
 import com.kodilla.rental.domain.User;

@@ -1,10 +1,12 @@
 package com.kodilla.rental.controller;
 
 import com.google.gson.Gson;
-import com.kodilla.rental.domain.User;
+import com.google.gson.GsonBuilder;
+import com.kodilla.rental.config.LocalDateAdapter;
 import com.kodilla.rental.domain.dto.UserDto;
 import com.kodilla.rental.service.UserDbService;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,7 +20,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -34,13 +35,19 @@ public class UserControllerTestSuite {
     @MockBean
     private UserDbService service;
 
+    private UserDto userDto;
+    private final List<UserDto> userDtoList = new ArrayList<>();
+
+    @BeforeEach
+    void prepareData() {
+        userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address",
+                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,10,10), null);
+        userDtoList.add(userDto);
+    }
+
     @Test
     void shouldGetUsersTest() throws Exception {
         //Given
-        List<UserDto> userDtoList = new ArrayList<>();
-        userDtoList.add(new UserDto(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>()));
-
         when(service.getAllUsers()).thenReturn(userDtoList);
 
         //When&Then
@@ -59,20 +66,13 @@ public class UserControllerTestSuite {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].password", Matchers.is("password")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].creditCardNo", Matchers.is("123456789")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].toPay", Matchers.is(0)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].creditCardNo", Matchers.is("123456789")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].signupDate", Matchers.is("2022-09-22")));
-
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].signupDate", Matchers.is("2022-10-10")));
     }
 
     @Test
     void shouldGetUserTest() throws Exception {
         //Given
-        User user = new User(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
-        UserDto userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
-
-        when(service.getUser(user.getUserId())).thenReturn(userDto);
+        when(service.getUser(1L)).thenReturn(userDto);
 
         //When&Then
         mockMvc
@@ -88,19 +88,14 @@ public class UserControllerTestSuite {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.mail", Matchers.is("mail@mail.com")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.password", Matchers.is("password")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.creditCardNo", Matchers.is("123456789")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.toPay", Matchers.is(0)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.signupDate", Matchers.is("2022-09-22")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.signupDate", Matchers.is("2022-10-10")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.toPay", Matchers.is(0)));
     }
 
     @Test
     void shouldDeleteUserTest() throws Exception {
         //Given
-        User user = new User(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
-        UserDto userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
-
-        when(service.getUser(user.getUserId())).thenReturn(userDto);
+        when(service.getUser(1L)).thenReturn(userDto);
 
         //When&Then
         mockMvc
@@ -113,15 +108,15 @@ public class UserControllerTestSuite {
     @Test
     void shouldAddUserTest() throws Exception {
         //Given
-        UserDto inputUser = new UserDto(1L, "name", "lastname", 940930123212L, "address",
+        UserDto jsonInput = new UserDto(1L, "name", "lastname", 940930123212L, "address",
                 "mail@mail.com", "password", "123456789", null, null, null);
-        UserDto userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
-
         when(service.createUser(any(UserDto.class))).thenReturn(userDto);
 
-        Gson gson = new Gson();
-        String jsonContent = gson.toJson(inputUser);
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .create();
+        String jsonContent = gson.toJson(jsonInput);
 
         //When & Then
         mockMvc
@@ -139,18 +134,19 @@ public class UserControllerTestSuite {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.mail", Matchers.is("mail@mail.com")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.password", Matchers.is("password")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.creditCardNo", Matchers.is("123456789")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.toPay", Matchers.is(0)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.signupDate", Matchers.is("2022-09-22")));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.signupDate", Matchers.is("2022-10-10")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.toPay", Matchers.is(0)));
     }
 
     @Test
     void shouldUpdateUserTest() throws Exception {
-        UserDto userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address",
-                "mail@mail.com", "password", "123456789", BigDecimal.ZERO, null, null);
-
+        //Given
         when(service.updateUser(any(UserDto.class))).thenReturn(userDto);
 
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+                .create();
         String jsonContent = gson.toJson(userDto);
 
         //When & Then
@@ -169,6 +165,7 @@ public class UserControllerTestSuite {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.mail", Matchers.is("mail@mail.com")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.password", Matchers.is("password")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.creditCardNo", Matchers.is("123456789")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.signupDate", Matchers.is("2022-10-10")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.toPay", Matchers.is(0)));
     }
 }

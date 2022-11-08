@@ -30,16 +30,14 @@ public class RentalMapperTestSuite {
 
     private Rental rental;
     private RentalDto rentalDto;
-    private List<Rental> rentalList = new ArrayList<>();
-    private Manufacturer manufacturer;
-    private Model model;
+    private final List<Rental> rentalList = new ArrayList<>();
     private Car car;
     private User user;
 
     @BeforeEach
     void prepareData() {
-        manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
-        model = new Model(1L, manufacturer, "name", 1800.00, BodyType.SEDAN, 2012, "red",
+        Manufacturer manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
+        Model model = new Model(1L, manufacturer, "name", 1800.00, BodyType.SEDAN, 2012, "red",
                 5, 4, FuelType.DIESEL, TransmissionType.AUTOMATIC, new HashSet<>());
         car = new Car(1L, model, "ST11111", BigDecimal.valueOf(150), CarStatus.AVAILABLE, new ArrayList<>());
         user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com",

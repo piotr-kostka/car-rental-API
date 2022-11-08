@@ -24,7 +24,7 @@ public class UserMapperTestSuite {
 
     private User user;
     private UserDto userDto;
-    private List<User> userList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
 
     @BeforeEach
     void prepareData() {
