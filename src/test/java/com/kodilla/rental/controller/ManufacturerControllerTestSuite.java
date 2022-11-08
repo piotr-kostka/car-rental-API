@@ -1,10 +1,10 @@
 package com.kodilla.rental.controller;
 
 import com.google.gson.Gson;
-import com.kodilla.rental.domain.Manufacturer;
 import com.kodilla.rental.domain.dto.ManufacturerDto;
 import com.kodilla.rental.service.ManufacturerDbService;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -32,12 +31,18 @@ public class ManufacturerControllerTestSuite {
     @MockBean
     private ManufacturerDbService service;
 
+    private ManufacturerDto manufacturerDto;
+    private final List<ManufacturerDto> manufacturerDtoList = new ArrayList<>();
+
+    @BeforeEach
+    void prepareData() {
+        manufacturerDto = new ManufacturerDto(1L, "test name", null);
+        manufacturerDtoList.add(manufacturerDto);
+    }
+
     @Test
     void shouldGetManufacturersTest() throws Exception {
         //Given
-        List<ManufacturerDto> manufacturerDtoList = new ArrayList<>();
-        manufacturerDtoList.add(new ManufacturerDto(1L, "test name", new HashSet<>()));
-
         when(service.getAllManufacturers()).thenReturn(manufacturerDtoList);
 
         //When&Then
@@ -54,10 +59,7 @@ public class ManufacturerControllerTestSuite {
     @Test
     void shouldGetManufacturerTest() throws Exception {
         //Given
-        Manufacturer manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
-        ManufacturerDto manufacturerDto = new ManufacturerDto(1L, "test name", new HashSet<>());
-
-        when(service.getManufacturer(manufacturer.getManufacturerId())).thenReturn(manufacturerDto);
+        when(service.getManufacturer(1L)).thenReturn(manufacturerDto);
 
         //When&Then
         mockMvc
@@ -72,10 +74,7 @@ public class ManufacturerControllerTestSuite {
     @Test
     void shouldDeleteManufacturerTest() throws Exception {
         //Given
-        Manufacturer manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
-        ManufacturerDto manufacturerDto = new ManufacturerDto(1L, "test name", new HashSet<>());
-
-        when(service.getManufacturer(manufacturer.getManufacturerId())).thenReturn(manufacturerDto);
+        when(service.getManufacturer(1L)).thenReturn(manufacturerDto);
 
         //When&Then
         mockMvc
@@ -88,8 +87,6 @@ public class ManufacturerControllerTestSuite {
     @Test
     void shouldAddManufacturerTest() throws Exception {
         //Given
-        ManufacturerDto manufacturerDto = new ManufacturerDto(1L, "test name", new HashSet<>());
-
         when(service.createManufacturer(any(ManufacturerDto.class))).thenReturn(manufacturerDto);
 
         Gson gson = new Gson();
@@ -110,9 +107,7 @@ public class ManufacturerControllerTestSuite {
     @Test
     void shouldUpdateManufacturerTest() throws Exception {
         //Given
-        ManufacturerDto manufacturerDto = new ManufacturerDto(1L, "test name", new HashSet<>());
-
-        when(service.createManufacturer(any(ManufacturerDto.class))).thenReturn(manufacturerDto);
+        when(service.updateManufacturer(any(ManufacturerDto.class))).thenReturn(manufacturerDto);
 
         Gson gson = new Gson();
         String jsonContent = gson.toJson(manufacturerDto);
@@ -124,6 +119,8 @@ public class ManufacturerControllerTestSuite {
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.manufacturerId", Matchers.is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.is("test name")));
     }
 }

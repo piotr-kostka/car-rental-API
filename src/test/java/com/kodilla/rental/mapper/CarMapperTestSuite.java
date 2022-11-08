@@ -29,13 +29,12 @@ public class CarMapperTestSuite {
 
     private Car car;
     private CarDto carDto;
-    private List<Car> carList = new ArrayList<>();
-    private Manufacturer manufacturer;
+    private final List<Car> carList = new ArrayList<>();
     private Model model;
 
     @BeforeEach
     void prepareData() {
-        manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
+        Manufacturer manufacturer = new Manufacturer(1L, "test name", new HashSet<>());
         model = new Model(1L, manufacturer, "name", 1800.00, BodyType.SEDAN, 2012, "red", 5, 4, FuelType.DIESEL, TransmissionType.AUTOMATIC, new HashSet<>());
         car = new Car(1L, model, "ST11111", BigDecimal.valueOf(150), CarStatus.AVAILABLE, new ArrayList<>());
         carDto = new CarDto(1L, model, "ST11111", BigDecimal.valueOf(150), CarStatus.AVAILABLE, new ArrayList<>());

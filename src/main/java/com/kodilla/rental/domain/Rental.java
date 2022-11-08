@@ -28,7 +28,7 @@ public class Rental {
     @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    private double priceRate;
+    private Double priceRate;
     private BigDecimal totalValue;
     private BigDecimal leftToPay;
 

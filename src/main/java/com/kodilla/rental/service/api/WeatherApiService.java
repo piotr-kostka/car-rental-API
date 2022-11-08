@@ -28,8 +28,8 @@ public class WeatherApiService {
             throw new ArithmeticException();
         }
 
-        for (int i = 0; i < mergedList.size(); i++) {
-            sum += mergedList.get(i);
+        for (Double temperature : mergedList) {
+            sum += temperature;
         }
 
         return sum / mergedList.size();
@@ -39,8 +39,8 @@ public class WeatherApiService {
         double totalRainfall = 0;
         List<Double> rainfall = weatherApiClient.getWeatherForLocation().getDaily().getRain_sum();
 
-        for (int r = 0; r < rainfall.size(); r++) {
-            totalRainfall += rainfall.get(r);
+        for (Double rain : rainfall) {
+            totalRainfall += rain;
         }
         return totalRainfall;
     }
@@ -49,8 +49,8 @@ public class WeatherApiService {
         double totalSnowfall = 0;
         List<Double> snowfall = weatherApiClient.getWeatherForLocation().getDaily().getSnowfall_sum();
 
-        for (int s = 0; s < snowfall.size(); s++) {
-            totalSnowfall += snowfall.get(s);
+        for (Double snow : snowfall) {
+            totalSnowfall += snow;
         }
         return totalSnowfall;
     }

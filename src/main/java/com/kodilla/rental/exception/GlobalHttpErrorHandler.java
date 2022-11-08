@@ -21,7 +21,7 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(CarCannotBeRented.class)
-    public ResponseEntity<Object> handleCarCannotBeRented(CarCannotBeRented exception) {
+    public ResponseEntity<Object> handleCarCannotBeRented() {
         return new ResponseEntity<>("Car is already rented or damaged", HttpStatus.BAD_REQUEST);
     }
 }

@@ -24,7 +24,7 @@ public class RentalDto {
     private LocalDate rentDate;
     private LocalDate returnDate;
     private Currency currency;
-    private double priceRate;
+    private Double priceRate;
     private BigDecimal totalValue;
     private BigDecimal leftToPay;
     private RentalStatus rentalStatus;

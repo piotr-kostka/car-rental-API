@@ -26,7 +26,7 @@ public class ModelMapperTestSuite {
 
     private Model model;
     private ModelDto modelDto;
-    private List<Model> modelList = new ArrayList<>();
+    private final List<Model> modelList = new ArrayList<>();
     private Manufacturer manufacturer;
 
     @BeforeEach
