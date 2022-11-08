@@ -41,7 +41,6 @@ public class RentalDbService {
     private static final String SUBJECT_NEW_RENTAL = "Rental Application: New Rental";
     private static final String SUBJECT_RETURN_CAR = "Rental Application: Return confirmation";
     private static final String SUBJECT_NEW_PAYMENT = "Rental Application: Payment confirmation";
-    private final AdminConfig adminConfig;
     private final NbpApiClient nbpApiClient;
     private final WeatherConditionsRate weatherConditionsRate;
 
@@ -77,8 +76,7 @@ public class RentalDbService {
                             savedRental.getUser().getMail(),
                             SUBJECT_NEW_RENTAL,
                             "This is confirmation of renting a car.\n" + "Rented car: " + savedRental.getCar() + ".\n"
-                                    + "Rent date: " + savedRental.getRentDate(),
-                            adminConfig.getAdminMail()
+                                    + "Rent date: " + savedRental.getRentDate()
                     )
             );
             return rentalMapper.mapToRentalDto(savedRental);
@@ -117,8 +115,7 @@ public class RentalDbService {
                             SUBJECT_RETURN_CAR,
                             "This is confirmation of returning a car.\n" + "Rented car: " + rental.get().getCar() + ".\n"
                                     + "Rent date: " + rental.get().getRentDate() + ", return date: " + rental.get().getReturnDate() + ".\n"
-                                    + "To pay: " + rental.get().getTotalValue() + rental.get().getCurrency(),
-                            adminConfig.getAdminMail()
+                                    + "To pay: " + rental.get().getTotalValue() + rental.get().getCurrency()
                     )
             );
         } else {
@@ -146,8 +143,7 @@ public class RentalDbService {
                             SUBJECT_NEW_PAYMENT,
                             "This is confirmation of payment.\n" + "Paid: " + rental.get().getTotalValue() + rental.get().getCurrency() +
                                     ". " + "Payment date: " + rental.get().getPaymentDate() + ".\n"
-                                    + "On your account left to pay: " + rental.get().getUser().getToPay(),
-                            adminConfig.getAdminMail()
+                                    + "On your account left to pay: " + rental.get().getUser().getToPay()
                     )
             );
         } else {

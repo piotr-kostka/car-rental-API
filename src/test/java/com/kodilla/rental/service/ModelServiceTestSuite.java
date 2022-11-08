@@ -37,8 +37,8 @@ public class ModelServiceTestSuite {
 
     private Model model;
     private ModelDto modelDto;
-    private List<Model> modelList = new ArrayList<>();
-    private List<ModelDto> modelDtoList = new ArrayList<>();
+    private final List<Model> modelList = new ArrayList<>();
+    private final List<ModelDto> modelDtoList = new ArrayList<>();
     private Manufacturer manufacturer;
 
     @BeforeEach

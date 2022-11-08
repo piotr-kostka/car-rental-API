@@ -43,7 +43,7 @@ public class RentalMapperTestSuite {
                 5, 4, FuelType.DIESEL, TransmissionType.AUTOMATIC, new HashSet<>());
         car = new Car(1L, model, "ST11111", BigDecimal.valueOf(150), CarStatus.AVAILABLE, new ArrayList<>());
         user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com",
-                "password", "123456789", BigDecimal.ZERO, false, LocalDate.of(2022,9,22), new HashSet<>());
+                "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
 
         rental = new Rental(1L, LocalDate.of(2022,10,10), LocalDate.of(2022,10,11), Currency.EUR,
                 1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED_AND_PAID, LocalDate.of(2022,10,11), user, car);

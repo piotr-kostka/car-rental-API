@@ -50,9 +50,6 @@ public class User {
     @Column(name = "amount_to_pay")
     private BigDecimal toPay;
 
-    @Column(name = "account_status")
-    private boolean isBlocked;
-
     @NotNull
     @Column(name = "signup_date")
     private LocalDate signupDate;

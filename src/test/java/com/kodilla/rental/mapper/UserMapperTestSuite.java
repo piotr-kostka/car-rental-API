@@ -15,7 +15,6 @@ import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @ExtendWith(MockitoExtension.class)
 public class UserMapperTestSuite {
@@ -29,8 +28,8 @@ public class UserMapperTestSuite {
 
     @BeforeEach
     void prepareData() {
-        user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, false, LocalDate.of(2022,9,22), new HashSet<>());
-        userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, false, LocalDate.of(2022,9,22), new HashSet<>());
+        user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
+        userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
         userList.add(user);
     }
 
@@ -48,7 +47,6 @@ public class UserMapperTestSuite {
         assertEquals("password", expected.getPassword());
         assertEquals("123456789", expected.getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expected.getToPay());
-        assertFalse(expected.isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expected.getSignupDate());
     }
 
@@ -66,7 +64,6 @@ public class UserMapperTestSuite {
         assertEquals("password", expected.getPassword());
         assertEquals("123456789", expected.getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expected.getToPay());
-        assertFalse(expected.isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expected.getSignupDate());
     }
 

@@ -28,7 +28,6 @@ public class UserDto {
     private String password;
     private String creditCardNo;
     private BigDecimal toPay;
-    private boolean isBlocked;
     private LocalDate signupDate;
 
     @JsonIgnore

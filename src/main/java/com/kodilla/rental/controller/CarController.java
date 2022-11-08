@@ -47,11 +47,6 @@ public class CarController {
         return carDbService.getAvailableCars();
     }
 
-    @GetMapping(value = "/rented")
-    public List<CarDto> getRentedCars() {
-        return carDbService.getRentedCars();
-    }
-
     @DeleteMapping(value = "{carId}")
     public void deleteCar(@PathVariable long carId) {
         carDbService.deleteCar(carId);

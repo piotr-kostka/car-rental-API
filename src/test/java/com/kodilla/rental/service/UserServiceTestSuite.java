@@ -36,13 +36,13 @@ public class UserServiceTestSuite {
 
     private User user;
     private UserDto userDto;
-    private List<User> userList = new ArrayList<>();
-    private List<UserDto> userDtoList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
+    private final List<UserDto> userDtoList = new ArrayList<>();
 
     @BeforeEach
     void prepareData() {
-        user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, false, LocalDate.of(2022,9,22), new HashSet<>());
-        userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, false, LocalDate.of(2022,9,22), new HashSet<>());
+        user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
+        userDto = new UserDto(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
         userList.add(user);
         userDtoList.add(userDto);
     }
@@ -67,7 +67,6 @@ public class UserServiceTestSuite {
         assertEquals("password", expectedList.get(0).getPassword());
         assertEquals("123456789", expectedList.get(0).getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expectedList.get(0).getToPay());
-        assertFalse(expectedList.get(0).isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expectedList.get(0).getSignupDate());
     }
 
@@ -90,7 +89,6 @@ public class UserServiceTestSuite {
         assertEquals("password", expected.getPassword());
         assertEquals("123456789", expected.getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expected.getToPay());
-        assertFalse(expected.isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expected.getSignupDate());
     }
 
@@ -115,7 +113,6 @@ public class UserServiceTestSuite {
         assertEquals("password", expected.getPassword());
         assertEquals("123456789", expected.getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expected.getToPay());
-        assertFalse(expected.isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expected.getSignupDate());
     }
 
@@ -141,7 +138,6 @@ public class UserServiceTestSuite {
         assertEquals("password", expected.getPassword());
         assertEquals("123456789", expected.getCreditCardNo());
         assertEquals(BigDecimal.ZERO, expected.getToPay());
-        assertFalse(expected.isBlocked());
         assertEquals(LocalDate.of(2022,9,22), expected.getSignupDate());
     }
 
