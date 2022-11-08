@@ -61,13 +61,6 @@ public class CarDbService {
         return carMapper.mapToCarDtoList(cars);
     }
 
-    public List<CarDto> getRentedCars() {
-        List<Car> cars = carRepository.findAll().stream()
-                .filter(c -> c.getCarStatus().equals(CarStatus.RENTED))
-                .collect(Collectors.toList());
-        return carMapper.mapToCarDtoList(cars);
-    }
-
     @Transactional
     public CarDto createCar(final CarDto carDto) throws CarAlreadyExistException {
 

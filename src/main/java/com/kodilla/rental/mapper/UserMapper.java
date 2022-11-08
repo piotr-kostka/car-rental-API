@@ -21,7 +21,6 @@ public class UserMapper {
                 userDto.getPassword(),
                 userDto.getCreditCardNo(),
                 userDto.getToPay(),
-                userDto.isBlocked(),
                 userDto.getSignupDate(),
                 userDto.getRentals()
         );
@@ -38,7 +37,6 @@ public class UserMapper {
                 user.getPassword(),
                 user.getCreditCardNo(),
                 user.getToPay(),
-                user.isBlocked(),
                 user.getSignupDate(),
                 user.getRentals()
         );

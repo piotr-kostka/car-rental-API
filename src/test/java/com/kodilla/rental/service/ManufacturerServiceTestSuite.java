@@ -33,8 +33,8 @@ public class ManufacturerServiceTestSuite {
 
     private Manufacturer manufacturer;
     private ManufacturerDto manufacturerDto;
-    private List<Manufacturer> manufacturerList = new ArrayList<>();
-    private List<ManufacturerDto> manufacturerDtoList = new ArrayList<>();
+    private final List<Manufacturer> manufacturerList = new ArrayList<>();
+    private final List<ManufacturerDto> manufacturerDtoList = new ArrayList<>();
 
 
     @BeforeEach

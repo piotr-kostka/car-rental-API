@@ -41,7 +41,6 @@ public class UserDbService {
 
         if (!peselList.contains(userDto.getPesel())) {
             User user = userMapper.mapToUser(userDto);
-            user.setBlocked(false);
             user.setToPay(BigDecimal.ZERO);
             user.setSignupDate(LocalDate.now());
             User savedUser = userRepository.save(user);
