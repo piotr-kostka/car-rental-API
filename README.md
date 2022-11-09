@@ -81,7 +81,8 @@ git clone https://github.com/piotr-kostka/car-rental-API-frontend
 BackEnd: 8080
 FrontEnd: 8081
 ```
-##Test coverage
+## Test coverage
+
 BackEnd application has over 75% test coverage:
 
 ![](https://snipboard.io/wXTP1s.jpg)
