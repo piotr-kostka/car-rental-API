@@ -1,6 +1,6 @@
 # ::CAR RENTAL APPLICATION::
 
-This is the final project in the Kodilla Java Developer Course. This is the backEnd part of this project. 
+This is the BackEnd part of final project in the Kodilla Java Developer Course. 
 
 The FrontEnd you can find here: https://github.com/piotr-kostka/car-rental-API-frontend
 
