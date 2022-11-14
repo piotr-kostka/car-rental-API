@@ -59,8 +59,7 @@ public class ModelDto {
     public int hashCode() {
         int result;
         long temp;
-        result = manufacturer.hashCode();
-        result = 31 * result + name.hashCode();
+        result = 31 * name.hashCode();
         temp = Double.doubleToLongBits(engineSize);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + bodyType.hashCode();
