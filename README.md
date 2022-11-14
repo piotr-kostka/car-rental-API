@@ -26,8 +26,7 @@ This is a simple car rental application. Details are enlisted below:
      \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
       '  |____| .__|_| |_|_| |_\__, | / / / /
      =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v2.7.1)
- :: Kodilla CUSTOM MOVIE SITE::   (v0.0.1 RELEASE)
+ :: Spring Boot ::                (v2.7.5)
 ```
 This project is based on Spring Boot in Java 11.
 
@@ -75,6 +74,10 @@ git clone https://github.com/piotr-kostka/car-rental-API-frontend
 ```
 ./gradlew build
 ```
+## How to use the FrontEnd
+
+Once you have the BackEnd and FrontEnd running start by this adress:
+http://localhost:8081/main
 
 ### Ports
 ```
@@ -165,9 +168,3 @@ POST /v1/rentals/
 PUT /v1/rentals/return/{rentalId}
 PUT /v1/rentals/pay/{rentalId}
 ```
-
-## How to use the FrontEnd
-
-Once you have the BackEnd and FrontEnd running start by this adress:
-```
-http://localhost:8081/rental
