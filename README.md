@@ -6,16 +6,17 @@ The FrontEnd you can find here: https://github.com/piotr-kostka/car-rental-API-f
 
 Last commit in BackEnd application: https://github.com/piotr-kostka/car-rental-API/commit/8a5a3688b6f66a8e6f0631908466395400ef8d9e
 
-This is a simple car rental application. Details are enlisted below:
+This is a simple car rental application. Details are enlisted below.
 
 ## Table of contents
 
 1. [Technologies](#technologies-used)
 2. [Getting Started](#getting-started)
-3. [Test coverage](#test-coverage)
-4. [Usage of an external API](#usage-of-api)
-5. [List of Endpoints](#list-of-endpoints)
-6. [How to use the FrontEnd](#how-to-use-the-frontend)
+3. [How to run it](#technologies-used)
+5. [Test coverage](#test-coverage)
+6. [Usage of an external API](#usage-of-api)
+7. [List of Endpoints](#list-of-endpoints)
+
 
 
 ## Technologies Used
@@ -74,10 +75,10 @@ git clone https://github.com/piotr-kostka/car-rental-API-frontend
 ```
 ./gradlew build
 ```
-## How to use the FrontEnd
+## How to run it
 
-Once you have the BackEnd and FrontEnd running start by this adress:
-http://localhost:8081/main
+Once you have the BackEnd and FrontEnd running start by this address:
+http://localhost:8081/home
 
 ### Ports
 ```
