@@ -12,7 +12,7 @@ This is a simple car rental application. Details are enlisted below.
 
 1. [Technologies](#technologies-used)
 2. [Getting Started](#getting-started)
-3. [How to run it](#technologies-used)
+3. [How to run it](#how-to-run-it)
 5. [Test coverage](#test-coverage)
 6. [Usage of an external API](#usage-of-api)
 7. [List of Endpoints](#list-of-endpoints)
