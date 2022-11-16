@@ -4,7 +4,7 @@ This is the BackEnd part of final project in the Kodilla Java Developer Course.
 
 The FrontEnd you can find here: https://github.com/piotr-kostka/car-rental-API-frontend
 
-Last commit in BackEnd application: https://github.com/piotr-kostka/car-rental-API/commit/8a5a3688b6f66a8e6f0631908466395400ef8d9e
+Last commit in BackEnd application: https://github.com/piotr-kostka/car-rental-API/commit/0a9dd0bd27a0eb1282b907e15eca5de8576e6575
 
 This is a simple car rental application. Details are enlisted below.
 
