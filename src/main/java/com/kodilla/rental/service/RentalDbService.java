@@ -67,6 +67,7 @@ public class RentalDbService {
         if (!car.getCarStatus().equals(CarStatus.RENTED)) {
             car.setCarStatus(CarStatus.RENTED);
             carRepository.save(car);
+            rental.setRentalStatus(RentalStatus.RENTED);
             rental.setRentDate(LocalDate.now());
             rental.setPriceRate(weatherConditionsRate.getWeatherRate());
             Rental savedRental = rentalRepository.save(rental);
