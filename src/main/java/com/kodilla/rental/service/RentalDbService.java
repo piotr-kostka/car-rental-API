@@ -93,7 +93,7 @@ public class RentalDbService {
             car.setCarStatus(CarStatus.AVAILABLE);
             carRepository.save(car);
 
-            rental.get().setRentalStatus(RentalStatus.RETURNED_AND_TO_PAY);
+            rental.get().setRentalStatus(RentalStatus.RETURNED);
             rental.get().setReturnDate(LocalDate.now());
             long days = ChronoUnit.DAYS.between(rental.get().getReturnDate(), rental.get().getRentDate()) + 1;
             double priceRate = rental.get().getPriceRate();
@@ -129,7 +129,7 @@ public class RentalDbService {
         if (rental.isPresent()) {
             rental.get().setLeftToPay(BigDecimal.ZERO);
             rental.get().setPaymentDate(LocalDate.now());
-            rental.get().setRentalStatus(RentalStatus.RETURNED_AND_PAID);
+            rental.get().setRentalStatus(RentalStatus.RETURNED);
             rentalRepository.save(rental.get());
 
             User user = rental.get().getUser();

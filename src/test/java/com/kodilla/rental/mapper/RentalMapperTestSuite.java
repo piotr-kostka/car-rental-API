@@ -44,9 +44,9 @@ public class RentalMapperTestSuite {
                 "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
 
         rental = new Rental(1L, LocalDate.of(2022,10,10), LocalDate.of(2022,10,11), Currency.EUR,
-                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED_AND_PAID, LocalDate.of(2022,10,11), user, car);
+                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED, LocalDate.of(2022,10,11), user, car);
         rentalDto = new RentalDto(1L, LocalDate.of(2022,10,10), LocalDate.of(2022,10,11), Currency.EUR,
-                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED_AND_PAID, LocalDate.of(2022,10,11), user, car);
+                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED, LocalDate.of(2022,10,11), user, car);
         rentalList.add(rental);
     }
 
@@ -62,7 +62,7 @@ public class RentalMapperTestSuite {
         assertEquals(1.5, expected.getPriceRate());
         assertEquals(BigDecimal.valueOf(150), expected.getTotalValue());
         assertEquals(BigDecimal.valueOf(150), expected.getLeftToPay());
-        assertEquals(RentalStatus.RETURNED_AND_PAID, expected.getRentalStatus());
+        assertEquals(RentalStatus.RETURNED, expected.getRentalStatus());
         assertEquals(LocalDate.of(2022,10,11), expected.getPaymentDate());
         assertEquals(user, expected.getUser());
         assertEquals(car, expected.getCar());
@@ -80,7 +80,7 @@ public class RentalMapperTestSuite {
         assertEquals(1.5, expected.getPriceRate());
         assertEquals(BigDecimal.valueOf(150), expected.getTotalValue());
         assertEquals(BigDecimal.valueOf(150), expected.getLeftToPay());
-        assertEquals(RentalStatus.RETURNED_AND_PAID, expected.getRentalStatus());
+        assertEquals(RentalStatus.RETURNED, expected.getRentalStatus());
         assertEquals(LocalDate.of(2022,10,11), expected.getPaymentDate());
         assertEquals(user, expected.getUser());
         assertEquals(car, expected.getCar());

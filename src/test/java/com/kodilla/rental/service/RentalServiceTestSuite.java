@@ -73,9 +73,9 @@ public class RentalServiceTestSuite {
         car = new Car(1L, model, "ST11111", BigDecimal.valueOf(150), CarStatus.AVAILABLE, new ArrayList<>());
         user = new User(1L, "name", "lastname", 940930123212L, "address", "mail@mail.com", "password", "123456789", BigDecimal.ZERO, LocalDate.of(2022,9,22), new HashSet<>());
         rental = new Rental(1L, LocalDate.of(2022,10,10), LocalDate.of(2022,10,11), Currency.EUR,
-                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED_AND_PAID, LocalDate.of(2022,10,11), user, car);
+                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RENTED, LocalDate.of(2022,10,11), user, car);
         rentalDto = new RentalDto(1L, LocalDate.of(2022,10,10), LocalDate.of(2022,10,11), Currency.EUR,
-                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED_AND_PAID, LocalDate.of(2022,10,11), user, car);
+                1.5, BigDecimal.valueOf(150), BigDecimal.valueOf(150), RentalStatus.RETURNED, LocalDate.of(2022,10,11), user, car);
         rentalList.add(rental);
         rentalDtoList.add(rentalDto);
     }
@@ -98,7 +98,7 @@ public class RentalServiceTestSuite {
         assertEquals(1.5, expectedList.get(0).getPriceRate());
         assertEquals(BigDecimal.valueOf(150), expectedList.get(0).getTotalValue());
         assertEquals(BigDecimal.valueOf(150), expectedList.get(0).getLeftToPay());
-        assertEquals(RentalStatus.RETURNED_AND_PAID, expectedList.get(0).getRentalStatus());
+        assertEquals(RentalStatus.RETURNED, expectedList.get(0).getRentalStatus());
         assertEquals(LocalDate.of(2022,10,11), expectedList.get(0).getPaymentDate());
         assertEquals(user, expectedList.get(0).getUser());
         assertEquals(car, expectedList.get(0).getCar());
@@ -121,7 +121,7 @@ public class RentalServiceTestSuite {
         assertEquals(1.5, expected.getPriceRate());
         assertEquals(BigDecimal.valueOf(150), expected.getTotalValue());
         assertEquals(BigDecimal.valueOf(150), expected.getLeftToPay());
-        assertEquals(RentalStatus.RETURNED_AND_PAID, expected.getRentalStatus());
+        assertEquals(RentalStatus.RETURNED, expected.getRentalStatus());
         assertEquals(LocalDate.of(2022,10,11), expected.getPaymentDate());
         assertEquals(user, expected.getUser());
         assertEquals(car, expected.getCar());
@@ -163,7 +163,7 @@ public class RentalServiceTestSuite {
         assertEquals(1.5, expected.getPriceRate());
         assertEquals(BigDecimal.valueOf(150), expected.getTotalValue());
         assertEquals(BigDecimal.valueOf(150), expected.getLeftToPay());
-        assertEquals(RentalStatus.RETURNED_AND_PAID, expected.getRentalStatus());
+        assertEquals(RentalStatus.RETURNED, expected.getRentalStatus());
         assertEquals(LocalDate.of(2022,10,11), expected.getPaymentDate());
         assertEquals(user, expected.getUser());
         assertEquals(car, expected.getCar());
